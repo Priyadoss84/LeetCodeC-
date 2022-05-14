@@ -1,0 +1,31 @@
+// Solve this probelm using Two Pointers, first pointer will point the first element and last pointer will point to the last element of the array.
+// When the first pointer finds an odd number, it will swap with the even number pointed by last pointer.
+// T(n) = O(n)
+// Space Complexity : InPlace
+
+class Solution {
+public:
+    vector<int> sortArrayByParity(vector<int>& nums) {
+        
+        if(nums.size()<=1)
+            return nums;
+        
+        int i=0;
+        int j=nums.size()-1;
+        int temp;
+        
+        while(i<j)
+        {
+            while(nums[i]%2==0 && i<j)
+                     i++;
+            while(nums[j]%2==1 && i<j)
+                j--;
+            if(i<j)
+            {
+                swap(nums[i],nums[j]);
+                i++;j--;
+            }
+        }
+        return nums;
+    }
+};
