@@ -1,0 +1,36 @@
+Naive solution :
+T(n) = O(n^2)
+S(n) = O(n)
+
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        int flag;
+        set<char> st;
+        if(s.length()==1)
+            return 0;
+        for(int i=0;i<s.length()-1;i++)
+        {
+            flag=1;
+            for(int j=i+1;j<s.length();j++)
+            {
+                if(!st.empty() && st.find(s[i])!=st.end())
+                {
+                    flag=0;
+                    break;
+                }
+                if(s[i] == s[j])
+                {
+                    flag=0;
+                    st.insert(s[i]);
+                    break;
+                }
+            }
+            if(flag==1)
+                return i;
+        }
+        if(st.find(s[s.length()-1])==st.end())
+            return s.length()-1;
+        return -1;
+    }
+};
