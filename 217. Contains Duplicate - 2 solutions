@@ -1,0 +1,30 @@
+//Naive solution : T(n)=O(n log n) S(n)=O(1)
+
+class Solution {
+public: 
+        sort(nums.begin(),nums.end());
+        for(int i=1;i<nums.size();i++)
+        {
+            if(nums[i]==nums[i-1])
+                return true;
+        }
+        return false;     
+    }
+};
+
+
+//efficient Solution :   T(n)=O(n) , S(n)=O(n)
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        unordered_set<int> s;
+        for(int i=0;i<nums.size();i++)
+        {
+            s.insert(nums[i]);
+        }
+        if(nums.size()==s.size())
+            return false;
+        else
+            return true;
+    }
+};
