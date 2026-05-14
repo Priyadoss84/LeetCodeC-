@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int maxOperations(vector<int>& nums, int k) {
+       int i=0,j=size(nums)-1;
+       int cnt=0;
+       sort(nums.begin(),nums.end());
+       while(i<j)
+       {
+        int sum=nums[i]+nums[j];
+            if(sum > k)
+                j--;
+            else if(sum < k)
+                i++;
+            else
+            {
+                cnt++;i++;j--;
+            }
+       } 
+       return cnt;
+    }
+};
